@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import handlebars from 'express-handlebars';
 
 import helperHandlebars from './helpers/handlebars';
+import route from './routers';
 
 dotenv.config();
 const app = express();
@@ -17,8 +18,6 @@ const __dirname = dirname(__filename);
 app.set('views', path.join(__dirname, 'resources','views'));
 app.engine('hbs', handlebars(helperHandlebars));
 app.set('view engine', 'hbs');
-app.use('/', (req, res) =>{
-    res.render('home');
-});
+route(app);
 
 app.listen(port, () => console.log(`App listen in http://localhost:${port}`));
