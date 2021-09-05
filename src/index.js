@@ -7,8 +7,10 @@ import handlebars from 'express-handlebars';
 
 import helperHandlebars from './helpers/handlebars';
 import route from './routers';
+import db from './configs/db';
 
 dotenv.config();
+db.connect();
 const app = express();
 const port = process.env.PORT||3000;
 const __filename = fileURLToPath(import.meta.url);
