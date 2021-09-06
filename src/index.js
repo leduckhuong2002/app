@@ -5,9 +5,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import handlebars from 'express-handlebars';
 
-import helperHandlebars from './helpers/handlebars';
-import route from './routers';
-import db from './configs/db';
+import helperHandlebars from './helpers/handlebars.js';
+import route from './routers/index.js';
+import db from './configs/db/index.js';
 
 dotenv.config();
 db.connect();

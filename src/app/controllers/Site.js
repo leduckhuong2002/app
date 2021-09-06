@@ -1,5 +1,5 @@
-import person from "../models/person";
-import mongoose from "../until/mongoose";
+import person from "../models/person.js";
+import mongoose from "../until/mongoose.js";
 class Site{
     index(req, res, next){
         person.find({})
