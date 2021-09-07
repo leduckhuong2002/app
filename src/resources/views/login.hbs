@@ -3,18 +3,23 @@
 <div id="login">
     <form action="/" method="POST" class="login-form">
         <h2 class="login-heading">Đăng nhập định danh <span>♥️</span></h2>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Tài khoản</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="leduc@gmail.com">
+        <div class="form-invalid">
+            <p>Đăng nhập thất bại <span>😤</span></p>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Mật khẩu</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+            <label for="account">Tài khoản</label>
+            <input type="text" class="form-control active" id="account" aria-describedby="emailHelp" placeholder="leduc@gmail.com">
+            <span class="form-message">Vui lòng nhập tài khoản</span>
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
+            <span class="form-message">Vui lòng nhập mật khẩu</span>
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Nhớ tôi</label>
+            <input type="checkbox" class="form-check-input" id="check-remind">
+            <label class="form-check-label" for="check-remind">Nhớ tôi</label>
         </div>
-        <button type="submit" class="btn btn-primary mt-4">Đăng nhập</button>
+        <button type="submit" class="btn btn-primary mt-4 float-left float-sm-right float-md-left float-lg-left float-xl-left">Đăng nhập</button>
     </form>
 </div>
