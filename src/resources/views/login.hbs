@@ -1,26 +1,50 @@
-<div id="login">
-    <form action="/" method="POST" id="form-1" class="login-form">
-        <h2 class="login-heading">Đăng nhập định danh <span>♥️</span></h2>
-        <div class="form-invalid">
-            <p>Đăng nhập thất bại <span>😤</span></p>
-        </div>
-        <div class="form-group">
-            <label for="account">Tài khoản</label>
-            <input type="text" class="form-control" id="account" autocomplete="username" placeholder="leduc@gmail.com">
-            <span class="form-message"></span>
-        </div>
-        <div class="form-group">
-            <label for="password">Mật khẩu</label>
-            <input type="password" class="form-control" id="password" autocomplete="current-password" placeholder="Mật khẩu">
-            <span class="form-message"></span>
-        </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="check-remind">
-            <label class="form-check-label" for="check-remind">Nhớ tôi</label>
-        </div>
-        <button type="submit" class="btn btn-primary mt-4 float-right float-sm-right float-md-left float-lg-left float-xl-left">Đăng nhập</button>
-        <button class="btn btn-light float-left float-sm-left float-md-right float-lg-right float-xl-right">Đăng ký</button>
-    </form>
+<div id="form">
+    <div class="form-cover">
+        <form action="/" method="POST" id="form-1" class="signup-form">
+            <h2 class="form-heading">Đăng ký thành viên <span>♥️</span></h2>
+            <span class="form-toggle"><i class="fas fa-caret-left"></i></span>
+            <div class="form-invalid">
+                <p>Đăng ký thất bại <span>😤</span></p>
+            </div>
+            <div class="form-group">
+                <label for="account-signup">Tài khoản</label>
+                <input type="text" name="account" class="form-control" id="account-signup" autocomplete="username" placeholder="leduc@gmail.com">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password-signup">Mật khẩu</label>
+                <input type="password" class="form-control" id="password-signup" autocomplete="current-password" placeholder="Mật khẩu">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirm-signup">Nhập lại khẩu</label>
+                <input type="password" name="password" class="form-control" id="confirm-signup" autocomplete="current-password" placeholder="Mật khẩu">
+                <span class="form-message"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 float-right float-sm-right float-md-left float-lg-left float-xl-left">Đăng ký</button>
+        </form>
+        <form action="/" method="POST" id="form-2" class="login-form">
+            <h2 class="form-heading">Đăng nhập định danh <span>♥️</span></h2>
+            <div class="form-invalid">
+                <p>Đăng nhập thất bại <span>😤</span></p>
+            </div>
+            <div class="form-group">
+                <label for="account">Tài khoản</label>
+                <input type="text" name="account" class="form-control" id="account" autocomplete="username" placeholder="leduc@gmail.com">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password" class="form-control" id="password" autocomplete="current-password" placeholder="Mật khẩu">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check-remind">
+                <label class="form-check-label" for="check-remind">Nhớ tôi</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 float-right float-sm-right float-md-left float-lg-left float-xl-left">Đăng nhập</button>
+        </form>
+    </div>
 </div>
 {{>footer}}
 <script src="/validate/validator.js"></script>
@@ -32,9 +56,28 @@
             errorNotify: '.form-invalid',
             errorSelector: '.form-message',
             rules: [
-              Validator.isRequired('#account', 'Vui lòng nhập tài khoản'),
-              Validator.isRequired('#password','Vui lòng nhập mật khẩu')
+            Validator.isRequired('#account', 'Vui lòng nhập tài khoản'),
+            Validator.isRequired('#password','Vui lòng nhập mật khẩu')
             ]
-          });
         });
+        const toggleBtn = document.querySelector('.form-toggle');
+        const formSignup = document.getElementById('form-1');
+        const iconToggle = toggleBtn.querySelector('i');
+        toggleBtn.onclick = () =>{
+            let iconClose = toggleBtn.querySelector('.fas.fa-caret-right');
+            if(!iconClose){
+                Object.assign(formSignup.style, {
+                    animation: 'rightToLeft 0.8s ease-in  forwards'
+                });
+                iconToggle.classList.add('fa-caret-right');
+                toggleBtn.style.left = '0';
+            }else{
+                Object.assign(formSignup.style, {
+                    animation: 'leftToRight 0.8s ease-in  forwards'
+                });
+                iconToggle.classList.remove('fa-caret-right');
+                toggleBtn.style.left = '-24px';
+            };
+        };
+    });
 </script>
