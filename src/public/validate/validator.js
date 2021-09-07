@@ -10,7 +10,7 @@ function Validator(options){
     let selectorRules = {};
     function Validate(inputElement , rule){
         const errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
-        let errorMessage ;
+        let errorMessage;
         const rules = selectorRules[rule.selector];
         for(let i=0; i<rules.length; i++){
             switch(inputElement.type){
