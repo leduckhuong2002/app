@@ -1,6 +1,6 @@
 class Login{
     auto(req, res, next){
-        res.send('oce');
+        res.render('login');
     };
 };
 export default new Login();
