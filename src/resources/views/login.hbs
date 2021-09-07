@@ -1,5 +1,3 @@
-<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 <div id="login">
     <form action="/" method="POST" class="login-form">
         <h2 class="login-heading">Đăng nhập định danh <span>♥️</span></h2>
@@ -8,7 +6,7 @@
         </div>
         <div class="form-group">
             <label for="account">Tài khoản</label>
-            <input type="text" class="form-control active" id="account" aria-describedby="emailHelp" placeholder="leduc@gmail.com">
+            <input type="text" class="form-control" id="account" aria-describedby="emailHelp" placeholder="leduc@gmail.com">
             <span class="form-message">Vui lòng nhập tài khoản</span>
         </div>
         <div class="form-group">
@@ -20,6 +18,8 @@
             <input type="checkbox" class="form-check-input" id="check-remind">
             <label class="form-check-label" for="check-remind">Nhớ tôi</label>
         </div>
-        <button type="submit" class="btn btn-primary mt-4 float-left float-sm-right float-md-left float-lg-left float-xl-left">Đăng nhập</button>
+        <button type="submit" class="btn btn-primary mt-4 float-right float-sm-right float-md-left float-lg-left float-xl-left">Đăng nhập</button>
     </form>
 </div>
+
+{{>footer}}
