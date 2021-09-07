@@ -1,6 +1,6 @@
 <div id="form">
     <div class="form-cover">
-        <form action="/" method="POST" id="form-1" class="signup-form">
+        <form action="/login/auto/post" method="POST" id="form-1" class="signup-form">
             <h2 class="form-heading">Đăng ký thành viên <span>♥️</span></h2>
             <span class="form-toggle"><i class="fas fa-caret-left"></i></span>
             <div class="form-invalid">
@@ -21,9 +21,9 @@
                 <input type="password" name="password" class="form-control" id="confirm-signup" autocomplete="current-password" placeholder="Mật khẩu">
                 <span class="form-message"></span>
             </div>
-            <button type="submit" class="btn btn-primary mt-4 float-right float-sm-right float-md-left float-lg-left float-xl-left">Đăng ký</button>
+            <button type="submit" class="btn btn-primary float-right float-sm-right float-md-left float-lg-left float-xl-left">Đăng ký</button>
         </form>
-        <form action="/" method="POST" id="form-2" class="login-form">
+        <form action="/login/auto/pass" method="POST" id="form-2" class="login-form">
             <h2 class="form-heading">Đăng nhập định danh <span>♥️</span></h2>
             <div class="form-invalid">
                 <p>Đăng nhập thất bại <span>😤</span></p>
@@ -52,6 +52,20 @@
     document.addEventListener('DOMContentLoaded',function(){
         Validator({
             form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorNotify: '.form-invalid',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#account-signup', 'Vui lòng nhập tài khoản'),
+            Validator.isRequired('#password-signup','Vui lòng nhập mật khẩu'),
+            Validator.isRequired('#confirm-signup','Vui lòng nhập mật khẩu'),
+            Validator.isConfirmed('#confirm-signup', function () {
+                    return document.querySelector('#form-1 #password-signup').value;
+                }, 'Nhập sai mật khẩu')
+            ]
+        });
+        Validator({
+            form: '#form-2',
             formGroupSelector: '.form-group',
             errorNotify: '.form-invalid',
             errorSelector: '.form-message',
