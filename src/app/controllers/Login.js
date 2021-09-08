@@ -1,11 +1,11 @@
-import Person from "../models/Person.js";
+import User from "../models/User";
 class Login{
     auto(req, res, next){
         res.render('login');
     };
     post(req, res, next){
-        const person = new Person(req.body);
-        person.save().then(()=> res.redirect('/')).catch(next);
+        const user = new User(req.body);
+        user.save().then(()=> res.redirect('/')).catch(next);
     };
 };
 export default new Login();
