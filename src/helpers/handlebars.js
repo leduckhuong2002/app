@@ -1,3 +1,3 @@
 export default {
-    extname: 'hbs'
+    extname: 'hbs',
 };

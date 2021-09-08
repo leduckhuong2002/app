@@ -9,7 +9,7 @@ class Login{
         user.save().then(()=> res.redirect('/')).catch(next);
     };
     pass(req, res, next){
-        User.findOne({ account : req.body.account , password : req.body.password })
+        User.findOne({ account : req.body.account , pass : req.body.password })
             .then(user => {
                 return mongoose.mongooseToObject(user)
             })
@@ -27,7 +27,7 @@ class Login{
         if(payload.hight) data.hight = payload.hight;
         if(payload.maxim) data.maxim = payload.maxim;
         if(req.file) data.avt = req.file.path.split('\\').slice(-2).join('/');
-        if(payload.favorites) data.favorites = payload.favorites.split(',');
+        if(payload.favorites) data.favorites = '/' + payload.favorites.split(',');
         Object.assign(user, data);
         await user.save()
             .then(() => res.redirect('/')).catch(next);
