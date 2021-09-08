@@ -61,28 +61,28 @@
         <div class="col-lg-6 col-md-6 col-sm-0 col-0 site-detail">
         <h2 class="site-characteristic">Đặc điểm</h2>
             <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Chiều cao: <span>{{people.hight}}</span></h3>
+                <h3 class="site-aspect-mesage">Chiều cao: <span>{{persons.hight}}</span></h3>
             </div>
             <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Cân nặng: <span>{{people.weight}}</span>kg</h3>
+                <h3 class="site-aspect-mesage">Cân nặng: <span>{{persons.weight}}</span>kg</h3>
             </div>
             <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Tuổi: <span>{{people.age}}</span></h3>
+                <h3 class="site-aspect-mesage">Tuổi: <span>{{persons.age}}</span></h3>
             </div>
             <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Người yêu: <span>{{#if people.crush}}Có{{else}}Chưa{{/if}}</span></h3>
+                <h3 class="site-aspect-mesage">Người yêu: <span>{{#if persons.crush}}Có{{else}}Chưa{{/if}}</span></h3>
             </div>
             <div class="site-aspect row no-gutters">
                 <h3 class="site-aspect-mesage col-4">Sở thích:</h3>
                 <div class="col-8">
-                    {{#each people.favorites}}
+                    {{#each persons.favorites}}
                         <span class="site-favorite">{{this}}</span>
                     {{/each}}
                 </div>
             </div>
             <div class="site-aspect row no-gutters">
                 <h3 class="site-aspect-mesage col-12">Châm ngôn sống:</h3>
-                <span class="site-maxim">{{people.maxim}}</span>
+                <span class="site-maxim">{{persons.maxim}}</span>
             </div>
         </div>
     </div>

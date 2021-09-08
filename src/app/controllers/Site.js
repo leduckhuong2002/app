@@ -1,11 +1,8 @@
-import person from "../models/person.js";
+import Person from "../models/Person.js";
 import mongoose from "../until/mongoose.js";
 class Site{
     index(req, res, next){
-        person.find({})
-            .then((people) => res.render('home',{
-                people: mongoose.multipleMongoosesToObject(people)[0]
-            })).catch(next);
-    };
+        Person.find({}).then(persons => res.render('home',{ persons: mongoose.mongooseToObject(persons[0]) }))
+    }
 };
 export default new Site();
