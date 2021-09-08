@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     crush:{ type: Boolean , default: false},
     favorites: [ String ],
     maxim:{ type: String , default: ''},
+    avt:{ type: String , default: '/img/default-avt.jpg'}
 }, {
     timestamps: true,
 });
