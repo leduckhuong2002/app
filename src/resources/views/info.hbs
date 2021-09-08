@@ -1,0 +1,43 @@
+
+{{>base}}
+<div id="form" style="min-height: 800px;">
+    <div class="form-cover" style="display: block;">
+        <form>
+            <h2 class="text-center">Thêm thông tin</h2>
+            <div class="form-group">
+                <label for="name-user">Họ và tên</label>
+                <input type="text" class="form-control" id="name-user" name="name" placeholder="N V A">
+            </div>
+            <div class="form-group">
+                <label for="age-user">Tuổi</label>
+                <input type="text" class="form-control" id="age-user" name="age" placeholder="18">
+            </div>
+            <div class="form-group">
+                <label for="user-hight">Chiều cao</label>
+                <input type="text" class="form-control" id="user-hight" name="hight" placeholder="1m75">
+            </div>
+            <div class="form-group">
+                <label for="user-weight">Cân nặng</label>
+                <input type="text" class="form-control" id="user-weight" name="weight" placeholder="54">
+            </div>
+            <div class="form-group">
+                <label for="user-avt">Chọn ảnh</label>
+                <input type="file" class="form-control-file" accept="image/*" name="avt" id="user-avt">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="crush" id="user-crush" value="true" checked>
+                <label class="form-check-label" for="user-crush">
+                    Có gấu
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="crush" id="user-uncrush" value="fasle">
+                <label class="form-check-label" for="user-uncrush">
+                    FA
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 float-right float-sm-right float-md-left float-lg-left float-xl-left">Xác nhận</button>
+        </form>
+    </div>
+</div>
+{{>footer}}
