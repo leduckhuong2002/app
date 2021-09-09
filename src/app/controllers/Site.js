@@ -8,10 +8,12 @@ class Site{
         })
         .then(users => {
             return users.map(( item, index ) =>{
-                return Object.assign(item, { idUser: index});
+                return Object.assign(item, { 
+                    avt: '/' + item.avt.split('/').slice(-2).join('/'),
+                    idUser: index
+                });
             });
         })
-        // .then(users => res.json(users)).catch(next);
         .then(users => res.render('home',{ users })).catch(next);
     };
 };
