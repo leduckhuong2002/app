@@ -1,62 +1,25 @@
 
-{{>header}}    
 <div id="site">
     <div class="site-ctn mt-4 row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="site-indicator active"></li>
-                <li data-target="#myCarousel" data-slide-to="1" class="site-indicator" ></li>
-                <li data-target="#myCarousel" data-slide-to="2" class="site-indicator" ></li>
-                <li data-target="#myCarousel" data-slide-to="3" class="site-indicator" ></li>
-                <li data-target="#myCarousel" data-slide-to="4" class="site-indicator" ></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="/img/khai-avt.jpg" alt="First slide">
-                    <div class="carousel-caption d-block d-md-block">
-                        <div class="site-base">
-                            <h5 class="site-name">Nguyễn Văn Khải</h5>
-                            <p class="site-des">Bậc thầy cuộc sống</p>
+                <ol class="carousel-indicators">
+                    {{#each users}}
+                        <li data-target="#myCarousel" data-slide-to="{{this.idUser}}" class="site-indicator {{start this.idUser 'active' ''}}"></li>
+                    {{/each}}
+                </ol>
+                <div class="carousel-inner">
+                    {{#each users}}
+                    <div class="carousel-item {{start this.idUser 'active' ''}}">
+                        <div class="fixed-img"><img class="d-block w-100" src="{{this.avt}}" alt="{{this.name}}"></div>
+                        <div class="carousel-caption d-block d-md-block">
+                            <div class="site-base">
+                                <h5 class="site-name">{{this.name}}</h5>
+                                <p class="site-des">{{this.nickname}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="/img/duc-avt.jpg" alt="Second slide">
-                    <div class="carousel-caption d-block d-md-block">
-                        <div class="site-base">
-                            <h5 class="site-name">Hoàng Trung Đức</h5>
-                            <p class="site-des">Thánh câu giờ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/huy-avt.jpg" alt="Third slide">
-                    <div class="carousel-caption d-block d-md-block">
-                        <div class="site-base">
-                            <h5 class="site-name">Lưu Sỹ Huy</h5>
-                            <p class="site-des">Người trưởng thành sớm thành công</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/huynh-avt.jpg" alt="Third slide">
-                    <div class="carousel-caption d-block d-md-block">
-                        <div class="site-base">
-                            <h5 class="site-name">Nguyễn Văn Huỳnh</h5>
-                            <p class="site-des">Đi lính để mất người yêu</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="fixed-img"><img class="d-block w-100" src="img/Picture1.png" alt="Third slide"></div>
-                    <div class="carousel-caption d-block d-md-block">
-                        <div class="site-base">
-                            <h5 class="site-name">Nguyễn Văn Huỳnh</h5>
-                            <p class="site-des">Đi lính để mất người yêu</p>
-                        </div>
-                    </div>
-                </div>
+                    {{/each}}
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -69,40 +32,53 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-0 col-0 site-detail">
-            <h2 class="site-characteristic">Đặc điểm</h2>
-            <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Chiều cao: <span>{{users.hight}}</span></h3>
-            </div>
-            <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Cân nặng: <span>{{users.weight}}</span>kg</h3>
-            </div>
-            <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Tuổi: <span>{{users.age}}</span></h3>
-            </div>
-            <div class="site-aspect">
-                <h3 class="site-aspect-mesage">Người yêu: <span>{{#if users.crush}}Có{{else}}Chưa{{/if}}</span></h3>
-            </div>
-            <div class="site-aspect row no-gutters">
-                <h3 class="site-aspect-mesage col-4">Sở thích:</h3>
-                <div class="col-8">
-                    {{#each users.favorites}}
-                        <span class="site-favorite">{{this}}</span>
-                    {{/each}}
+            {{#each users}}
+            <span class="site-slide {{start this.idUser 'd-block' 'd-none'}}">
+                <h2 class="site-characteristic">Đặc điểm</h2>
+                <div class="site-aspect">
+                    <h3 class="site-aspect-mesage">Chiều cao: <span>{{this.hight}}</span></h3>
                 </div>
-            </div>
-            <div class="site-aspect row no-gutters">
-                <h3 class="site-aspect-mesage col-12">Châm ngôn sống:</h3>
-                <span class="site-maxim">{{users.maxim}}</span>
-            </div>
+                <div class="site-aspect">
+                    <h3 class="site-aspect-mesage">Cân nặng: <span>{{this.weight}}</span>kg</h3>
+                </div>
+                <div class="site-aspect">
+                    <h3 class="site-aspect-mesage">Tuổi: <span>{{this.age}}</span></h3>
+                </div>
+                <div class="site-aspect">
+                    <h3 class="site-aspect-mesage">Người yêu: <span>{{#if this.crush}}Đã có {{else}}Chưa có{{/if}}</span></h3>
+                </div>
+                <div class="site-aspect row no-gutters">
+                    <h3 class="site-aspect-mesage col-4">Sở thích:</h3>
+                    <div class="col-8">
+                            {{#each this.favorites}}
+                            <span class="site-favorite">{{this}}</span>
+                            {{/each}}
+                    </div>
+                </div>
+                <div class="site-aspect row no-gutters">
+                    <h3 class="site-aspect-mesage col-12">Châm ngôn sống:</h3>
+                    <span class="site-maxim">{{this.maxim}}</span>
+                </div>
+            </span>
+            {{/each}}
         </div>
     </div>
 </div>
 {{>footer}}
-{{!-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function(){
+        let slides = $('.site-slide');
         $('#myCarousel').on('slid.bs.carousel', function() {
-            let currentIndex = $('div.active').index() + 1;
-            console.log(currentIndex);
+            let currentIndex = $('div.active').index();
+            [...slides].forEach((item, index)=> {
+                if(index===currentIndex){
+                    item.classList.remove('d-none');
+                    item.classList.add('d-block');
+                }else{
+                    item.classList.remove('d-block');
+                    item.classList.add('d-none');
+                };
+            });
         });
     });
-</script> --}}
+</script>

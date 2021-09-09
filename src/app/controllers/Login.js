@@ -23,6 +23,7 @@ class Login{
         let data = {};
         let payload = req.body;
         if(payload.name) data.name = payload.name;
+        if(payload.nickname) data.nickname = payload.nickname;
         if(payload.age) data.age = payload.age;
         if(payload.weight) data.weight = payload.weight;
         if(payload.hight) data.hight = payload.hight;

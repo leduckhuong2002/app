@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     account:{ type: String , unique: true, maxlength: 100, required : true },
     password: { type: String , maxlength: 25},
+    nickname:{ type : String , maxlength: 160, default: ''},
     name:{ type: String , default: ''},
     age:{ type: Number , default: 0},
     weight:{ type: Number , default: 0},
