@@ -9,34 +9,39 @@ class Login{
         user.save().then(()=> res.redirect('/')).catch(next);
     };
     pass(req, res, next){
-        User.findOne({ account : req.body.account , pass : req.body.password })
+        User.findOne({ account : req.body.account , password : req.body.password })
             .then(user => {
-                return mongoose.mongooseToObject(user)
+                if(user) return mongoose.mongooseToObject(user);
+                return Promise.reject(new Error("Tài khoản không đúng!"));
             })
             .then(user => res.render('info', {
                 user
             })).catch(next);
     };
     async modifier(req, res, next){
-        const user = await User.findOne({ _id : req.params.id})
-        let data = {};
-        let payload = req.body;
-        if(payload.name) data.name = payload.name;
-        if(payload.age) data.age = payload.age;
-        if(payload.weight) data.weight = payload.weight;
-        if(payload.hight) data.hight = payload.hight;
-        if(payload.maxim) data.maxim = payload.maxim;
-        if(req.file) data.avt ='/' + req.file.path.split('\\').slice(-2).join('/');
-        let tmp = payload.favorites.split(',');
-        for (const item in tmp) {
-            if (Object.hasOwnProperty.call(tmp, item)) {
-                if(tmp[item].trim()==='') tmp.splice(item,1);
+        const user = await User.findOne({ _id : req.params.id});
+        if(user){
+            let data = {};
+            let payload = req.body;
+            if(payload.name) data.name = payload.name;
+            if(payload.age) data.age = payload.age;
+            if(payload.weight) data.weight = payload.weight;
+            if(payload.hight) data.hight = payload.hight;
+            if(payload.maxim) data.maxim = payload.maxim;
+            if(req.file) data.avt ='/' + req.file.path.split('\\').slice(-2).join('/');
+            let tmp = payload.favorites.split(',');
+            for (const item in tmp) {
+                if (Object.hasOwnProperty.call(tmp, item)) {
+                    if(tmp[item].trim()==='') tmp.splice(item,1);
+                };
             };
-        };
-        if(payload.favorites) data.favorites = tmp;
-        Object.assign(user, data);
-        await user.save()
-            .then(() => res.redirect('/')).catch(next);
+            if(payload.favorites) data.favorites = tmp;
+            Object.assign(user, data);
+            await user.save()
+                .then(() => res.redirect('/')).catch(next);
+        }else{
+            res.redirect('/login/auto');
+        }
     };
 };
 export default new Login();
