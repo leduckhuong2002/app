@@ -37,8 +37,9 @@ class Login{
             };
             if(payload.favorites) data.favorites = tmp;
             Object.assign(user, data);
-            await user.save()
-                .then(() => res.redirect('/')).catch(next);
+            await res.json(user);
+            // await user.save()
+            //     .then(() => res.redirect('/')).catch(next);
         }else{
             res.redirect('/login/auto');
         }
