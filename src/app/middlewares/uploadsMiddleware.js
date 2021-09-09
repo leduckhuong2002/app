@@ -4,8 +4,8 @@ import { fileURLToPath } from 'url';
 import multer  from 'multer';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-console.log(path.resolve(__dirname, '../../public/uploads'));
-console.log(path.resolve(__dirname, '../../../public/uploads'));
+console.log('hathikimanh', path.resolve(__dirname, '../../public/uploads'));
+console.log('hathikimanh', path.resolve( __dirname, '../../../public/uploads'));
 const upload = multer({ dest: path.resolve(__dirname, '../../public/uploads') });
 export default {
     upload,
