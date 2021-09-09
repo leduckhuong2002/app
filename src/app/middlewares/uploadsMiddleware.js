@@ -13,8 +13,8 @@ const fileStorageEngine = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: fileStorageEngine });
-// const upload = multer({ dest: path.resolve(__dirname, '../../public/uploads') });
+// const upload = multer({ storage: fileStorageEngine });
+const upload = multer({ dest: path.resolve(__dirname, '../../public/uploads') });
 export default {
     upload,
     opUpload : upload.fields([{ name: 'imgProduct' }, { name: 'listImg', maxCount: 8 }])
