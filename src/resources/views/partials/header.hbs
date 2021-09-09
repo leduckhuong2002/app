@@ -1,5 +1,5 @@
 <header id="header">
-    <div class="header">
+    <div class="header over-hidden">
         <h2 class="header-heading">Thành viên ☠️</h2>
         <label for="header-checked" class="header-btn">
             <i class="header-icon fas fa-cog"></i>
@@ -11,3 +11,14 @@
         <label for="header-checked" class="overlay"></label>
     </div>
 </header>
+<script>
+    const headerElement = document.querySelector('.header');
+    const inputHeaderElement = document.querySelector('.header #header-checked');
+    inputHeaderElement.onchange = () =>{
+        if(inputHeaderElement.checked){
+            headerElement.classList.remove('over-hidden');
+        }else{
+            headerElement.classList.add('over-hidden');
+        }
+    }
+</script>
