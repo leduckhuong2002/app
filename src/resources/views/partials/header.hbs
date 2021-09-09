@@ -12,13 +12,15 @@
     </div>
 </header>
 <script>
-    const headerElement = document.querySelector('.header');
-    const inputHeaderElement = document.querySelector('.header #header-checked');
-    inputHeaderElement.onchange = () =>{
-        if(inputHeaderElement.checked){
-            headerElement.classList.remove('over-hidden');
-        }else{
-            headerElement.classList.add('over-hidden');
+    document.addEventListener('DOMContentLoaded', function(){
+        const headerElement = document.querySelector('.header');
+        const inputHeaderElement = document.querySelector('.header #header-checked');
+        inputHeaderElement.onchange = () =>{
+            if(inputHeaderElement.checked){
+                headerElement.classList.remove('over-hidden');
+            }else{
+                headerElement.classList.add('over-hidden');
+            }
         }
     }
 </script>
