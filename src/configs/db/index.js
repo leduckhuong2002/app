@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 async function connect(){
     try{
-        await mongoose.connect('mongodb://localhost:27017/KA_LOCAL_DEV', {
+        await mongoose.connect( process.env.URI_DB , {
             useNewUrlParser: true,
             useUnifiedTopology: true,
           });
