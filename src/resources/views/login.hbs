@@ -76,7 +76,10 @@
         });
         const toggleBtn = document.querySelector('.form-toggle');
         const formSignup = document.getElementById('form-1');
+        const formSignin = document.getElementById('form-2');
         const iconToggle = toggleBtn.querySelector('i');
+        const remindBtn = document.getElementById('check-remind');
+        let isAutoLogin = JSON.parse(localStorage.getItem('autoLogin'));
         toggleBtn.onclick = () =>{
             let iconClose = toggleBtn.querySelector('.fas.fa-caret-right');
             if(!iconClose){
@@ -92,6 +95,19 @@
                 iconToggle.classList.remove('fa-caret-right');
                 toggleBtn.style.left = '-24px';
             };
+        };
+        remindBtn.onchange = () =>{
+            if(remindBtn.checked){
+                localStorage.setItem('autoLogin', JSON.stringify('true'));
+            }else{
+                localStorage.removeItem('autoLogin');
+            };
+        };
+        if(isAutoLogin){
+            remindBtn.checked = true;
+            setTimeout(() =>{
+                formSignin.submit();
+            }, 2000);
         };
     });
 </script>

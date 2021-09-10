@@ -1,4 +1,6 @@
 import User from "../models/User.js";
+import bcrypt from 'bcryptjs';
+const saltRounds = 10;
 import mongoose from '../until/mongoose.js'
 class Login{
     auto(req, res, next){
@@ -10,14 +12,31 @@ class Login{
         res.render('login');
     };
     post(req, res, next){
-        const user = new User(req.body);
-        res.cookie('newUser', JSON.stringify(req.body), { signed : true , expires: new Date(Date.now() + 8 * 3600000)});
-        user.save().then(()=> res.redirect('/login/auto')).catch(next);
+        const brief = req.body;
+        bcrypt.hash(brief.password, saltRounds)
+                .then( hashPassWord =>{
+                    brief.password = hashPassWord;
+                    const user = new User(brief);
+                    user.save()
+                        .then(() => {
+                            res.cookie('newUser', JSON.stringify(brief), { signed : true , expires: new Date(Date.now() + 8 * 3600000)});
+                            res.redirect('/login/auto');
+                        })
+                }).catch(next);
     };
     pass(req, res, next){
-        User.findOne({ account : req.body.account , password : req.body.password })
+        let cookies = JSON.parse(req.signedCookies.newUser);
+        User.findOne({ account : req.body.account })
             .then(user => {
-                if(user) return mongoose.mongooseToObject(user);
+                if(user){
+                    if(req.body.password === cookies.password){
+                        return mongoose.mongooseToObject(user);
+                    }else if(bcrypt.compareSync(req.body.password, user.password)){
+                        return mongoose.mongooseToObject(user);
+                    }else{
+                        return Promise.reject(new Error("Tài khoản không đúng!"));
+                    }
+                };
                 return Promise.reject(new Error("Tài khoản không đúng!"));
             })
             .then(user => res.render('info', {

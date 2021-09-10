@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     account:{ type: String , unique: true, maxlength: 100, required : true },
-    password: { type: String , maxlength: 25},
+    password: { type: String , maxlength: 250},
     nickname:{ type : String , maxlength: 160, default: ''},
     name:{ type: String , default: ''},
     age:{ type: Number , default: 0},
