@@ -2,11 +2,17 @@ import User from "../models/User.js";
 import mongoose from '../until/mongoose.js'
 class Login{
     auto(req, res, next){
+        if(req.signedCookies.newUser){
+            let cookies = JSON.parse(req.signedCookies.newUser);
+            res.render('login', { cookies });
+            return;
+        }
         res.render('login');
     };
     post(req, res, next){
         const user = new User(req.body);
-        user.save().then(()=> res.redirect('/')).catch(next);
+        res.cookie('newUser', JSON.stringify(req.body), { signed : true , expires: new Date(Date.now() + 8 * 3600000)});
+        user.save().then(()=> res.redirect('/login/auto')).catch(next);
     };
     pass(req, res, next){
         User.findOne({ account : req.body.account , password : req.body.password })

@@ -30,12 +30,12 @@
             </div>
             <div class="form-group">
                 <label for="account">Tài khoản</label>
-                <input type="text" name="account" class="form-control" id="account" autocomplete="username" placeholder="leduc@gmail.com">
+                <input type="text" name="account" class="form-control" id="account" autocomplete="username"  value="{{#if cookies}}{{cookies.account}}{{/if}}" placeholder="leduc@gmail.com">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="password">Mật khẩu</label>
-                <input type="password" name="password" class="form-control" id="password" autocomplete="current-password" placeholder="Mật khẩu">
+                <input type="password" name="password" class="form-control" id="password" autocomplete="current-password"  value="{{#if cookies}}{{cookies.password}}{{/if}}" placeholder="Mật khẩu">
                 <span class="form-message"></span>
             </div>
             <div class="form-check">
